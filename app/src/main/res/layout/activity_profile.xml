@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_profile">
+
+    <Button
+        android:id="@+id/manager"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="#3F51B5"
+        android:text="Enter as a Manager"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcoming" />
+
+    <Button
+        android:id="@+id/employee"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="#3F51B5"
+        android:text="Enter as a Employee"
+        android:textSize="12dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manager" />
+
+    <TextView
+        android:id="@+id/welcoming"
+        android:layout_width="367dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        android:text="Welcome to VigSafe App"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.863"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
