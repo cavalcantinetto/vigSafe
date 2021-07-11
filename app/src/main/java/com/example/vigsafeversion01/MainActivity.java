@@ -1,12 +1,18 @@
 package com.example.vigsafeversion01;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Date currentTime = Calendar.getInstance().getTime();
                 measurement();
                 Intent intent = new Intent(MainActivity.this,
                         manager_report_layout.class);
@@ -44,13 +51,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void measurement() {
-        Date currentTime = Calendar.getInstance().getTime();
 
-        Measure m1 = new Measure(text1.getText().toString(), editText1.getText().toString(), currentTime.toString());
-        Measure m2 = new Measure(text2.getText().toString(), editText2.getText().toString(), currentTime.toString());
-        Measure m3 = new Measure(text3.getText().toString(), editText3.getText().toString(), currentTime.toString());
-        Measure m4 = new Measure(text4.getText().toString(), editText4.getText().toString(), currentTime.toString());
+    public void measurement() {
+        //Date currentTime = Calendar.getInstance().getTime();
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
+        Date todaysDate = new Date();
+        String testDateString = df.format(todaysDate);
+
+
+        Measure m1 = new Measure(text1.getText().toString(), editText1.getText().toString(), testDateString);
+        Measure m2 = new Measure(text2.getText().toString(), editText2.getText().toString(), testDateString);
+        Measure m3 = new Measure(text3.getText().toString(), editText3.getText().toString(), testDateString);
+        Measure m4 = new Measure(text4.getText().toString(), editText4.getText().toString(), testDateString);
 
         report.addMeasure(m1);
         report.addMeasure(m2);
@@ -64,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
         editText1.requestFocus();
     }
+
+
 }
 
 
