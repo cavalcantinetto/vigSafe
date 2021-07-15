@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/temperatures" />
 
     <Button
-        android:id="@+id/report"
+        android:id="@+id/reportdb"
         android:layout_width="190dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"

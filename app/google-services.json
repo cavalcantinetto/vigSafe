@@ -1,10 +1,40 @@
 {
   "project_info": {
     "project_number": "982668284488",
+    "firebase_url": "https://vigsafe-default-rtdb.firebaseio.com",
     "project_id": "vigsafe",
     "storage_bucket": "vigsafe.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982668284488:android:d6c88bed1d2ac31efa3e7d",
+        "android_client_info": {
+          "package_name": "com.example.testdatabase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982668284488-099lrf2hg3c11uh6gcj68qukgu3jpjis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAghOSNPj8uIR3BOHjf0tJFPtF_AiAwkMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982668284488-099lrf2hg3c11uh6gcj68qukgu3jpjis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:982668284488:android:8c8af0cd4066a867fa3e7d",

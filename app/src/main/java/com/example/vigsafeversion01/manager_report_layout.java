@@ -1,38 +1,44 @@
 package com.example.vigsafeversion01;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
+
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class manager_report_layout extends MainActivity implements Serializable {
 
     Button btnSend, btnCorrect;
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
+//    FirebaseDatabase rootNode;
+//    DatabaseReference reference;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,21 +72,26 @@ public class manager_report_layout extends MainActivity implements Serializable 
 
             table.addView(row);
         }
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference();
 
-                for (int i=0; i<measurements.size(); i++) {
-                    Measure m1Test = measurements.get(i);
-                    rootNode = FirebaseDatabase.getInstance();
-                    reference = rootNode.getReference(String.valueOf(i));
-                    reference.setValue(m1Test);
-                }
 
-                }
-        });
+        btnSend.setOnClickListener(v -> {
+            String res = "";
+            for(Measure measure : report.getMeasurements()) {
+                DbManager db = new DbManager(this);
+                res = db.addRecord(measure.productType, measure.temperature, measure.date);
+            }
+            Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+            });
+
     }
 }
 
+//rootNode = FirebaseDatabase.getInstance();
+//        reference = rootNode.getReference();
+//
+//        for (int i=0; i<measurements.size(); i++) {
+//        Measure m1Test = measurements.get(i);
+//        rootNode = FirebaseDatabase.getInstance();
+//        reference = rootNode.getReference().child("Measure");
+//        reference.push().setValue(m1Test);
+//        }

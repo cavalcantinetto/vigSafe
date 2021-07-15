@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VigSafeversion01">
-        <activity android:name=".Manager"></activity>
+        <activity android:name=".ReportResponse"></activity>
+        <activity android:name=".Manager" />
         <activity android:name=".MainActivity" />
         <activity android:name=".manager_report_layout" />
         <activity android:name=".Activity_profile">

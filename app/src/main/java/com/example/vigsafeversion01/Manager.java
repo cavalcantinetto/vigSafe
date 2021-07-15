@@ -17,21 +17,9 @@ public class Manager extends AppCompatActivity {
 
         products = (Button) findViewById(R.id.manager);
         temperatures = (Button) findViewById(R.id.temperatures);
-        schedule = findViewById(R.id.schedule);
-        report = findViewById(R.id.report);
+        schedule = (Button) findViewById(R.id.schedule);
+        report = (Button) findViewById(R.id.reportdb);
 
-
-//        products.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                productsActivity();
-//            }
-//
-//            private void productsActivity() {
-//                startActivity(new Intent(Manager.this, Products.class));
-//            }
-//
-//        });
 
         temperatures.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,29 +32,14 @@ public class Manager extends AppCompatActivity {
             }
         });
 
-//        schedule.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                scheduleActivity();
-//            }
-//
-//            private void scheduleActivity() {
-//                startActivity(new Intent(Manager.this, Schedule.class));
-//            }
-
-//        });
         report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reportActivity();
+                Intent intent = new Intent(Manager.this,
+                        ReportResponse.class);
+                startActivity(intent);
             }
-
-            private void reportActivity() {
-                startActivity(new Intent(Manager.this, manager_report_layout.class));
-            }
-
         });
-
 
 
     }

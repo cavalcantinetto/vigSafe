@@ -9,6 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     TextView text1, text2, text3, text4;
     EditText editText1, editText2, editText3, editText4;
     Button btn1;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Date currentTime = Calendar.getInstance().getTime();
                 measurement();
+                startdbapp();
                 Intent intent = new Intent(MainActivity.this,
                         manager_report_layout.class);
                 intent.putExtra("REPORT", report);
@@ -49,9 +59,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
+    public void startdbapp() {
+        new DbManager(this);
+        startActivity(new Intent(this, manager_report_layout.class));
 
+
+    }
     public void measurement() {
         //Date currentTime = Calendar.getInstance().getTime();
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
@@ -75,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         editText4.setText("");
 
         editText1.requestFocus();
+
     }
 
 
