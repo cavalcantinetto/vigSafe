@@ -2,6 +2,8 @@ package com.example.vigsafeversion01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -21,7 +23,7 @@ public class ReportResponse extends AppCompatActivity {
     TextView textResponse;
     EditText textSearch;
     DbManager obj = null;
-    Button btnSearch;
+    Button btnSearch, btnReturn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,20 @@ public class ReportResponse extends AppCompatActivity {
         //textResponse = findViewById(R.id.textResponse);
         textSearch = findViewById(R.id.textSearch);
         btnSearch = findViewById(R.id.search_button);
+        btnReturn = findViewById(R.id.return_button);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 searchData();
+            }
+        });
+
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReportResponse.this, Activity_profile.class);
+                startActivity(intent);
             }
         });
 
@@ -54,9 +65,9 @@ public class ReportResponse extends AppCompatActivity {
             TextView t2 = new TextView(this);
             TextView t3 = new TextView(this);
 
-            t1.setText(measure.getProductType());
-            t2.setText(measure.getTemperature());
-            t3.setText(measure.getDate());
+            t1.setText(measure.getDate());
+            t2.setText(measure.getProductType());
+            t3.setText(measure.getTemperature());
 
             TableRow row = new TableRow(this);
             row.addView(t1);
@@ -68,8 +79,6 @@ public class ReportResponse extends AppCompatActivity {
 
 
     }
-
-
 
 
 

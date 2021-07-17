@@ -2,10 +2,13 @@ package com.example.vigsafeversion01;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -59,5 +62,4 @@ public class DbManager extends SQLiteOpenHelper {
         return result;
     }
 
-
-}
+    }
