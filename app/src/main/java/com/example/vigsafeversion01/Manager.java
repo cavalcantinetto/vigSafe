@@ -15,11 +15,26 @@ public class Manager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
 
-        products = (Button) findViewById(R.id.manager);
+        products = (Button) findViewById(R.id.products);
         temperatures = (Button) findViewById(R.id.temperatures);
         schedule = (Button) findViewById(R.id.schedule);
         report = (Button) findViewById(R.id.reportdb);
 
+        products.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Manager.this, insertProducts.class));
+            }
+
+        });
+
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Manager.this, FetchDataFoodList.class));
+            }
+
+        });
 
         temperatures.setOnClickListener(new View.OnClickListener() {
             @Override

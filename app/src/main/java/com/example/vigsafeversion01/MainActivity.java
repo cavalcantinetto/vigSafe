@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     TextView text1, text2, text3, text4;
     EditText editText1, editText2, editText3, editText4;
     Button btn1;
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startdbapp() {
         new DbManager(this);
-        startActivity(new Intent(this, manager_report_layout.class));
+        //startActivity(new Intent(this, manager_report_layout.class));
 
 
     }

@@ -39,8 +39,6 @@ import java.util.TimerTask;
 public class manager_report_layout extends MainActivity implements Serializable {
 
     Button btnSend, btnCorrect;
-//    FirebaseDatabase rootNode;
-//    DatabaseReference reference;
 
 
     @Override
@@ -50,13 +48,8 @@ public class manager_report_layout extends MainActivity implements Serializable 
         Report report = (Report) getIntent().getSerializableExtra("REPORT");
         ArrayList<Measure> measurements = report.getMeasurements();
 
-
-
         btnSend = findViewById(R.id.buttonSend);
         btnCorrect = findViewById(R.id.buttonCorrect);
-
-
-
 
         TableLayout table = (TableLayout)findViewById(R.id.table_report);
 
@@ -85,7 +78,7 @@ public class manager_report_layout extends MainActivity implements Serializable 
                 res = db.addRecord(measure.productType, measure.temperature, measure.date);
             }
 
-            Toast toast = Toast.makeText(this, "Successfully registered", Toast.LENGTH_LONG );
+            Toast toast = Toast.makeText(this, res, Toast.LENGTH_LONG );
             toast.setGravity(Gravity.CENTER |Gravity.START, 500, 0);
             toast.show();
 

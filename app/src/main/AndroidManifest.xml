@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vigsafeversion01">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -9,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VigSafeversion01">
-        <activity android:name=".ReportResponse"></activity>
+        <activity android:name=".insertProducts"></activity>
+        <activity android:name=".FetchDataFoodList" />
+        <activity android:name=".ReportResponse" />
         <activity android:name=".Manager" />
         <activity android:name=".MainActivity" />
         <activity android:name=".manager_report_layout" />
