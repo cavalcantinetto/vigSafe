@@ -11,8 +11,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Insert a new Product"
+        android:text="@string/menuInstructions"
         android:textSize="24dp"
+        android:textColor="@color/black"
         android:gravity="center"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -26,7 +27,7 @@
             android:id="@+id/insertProductType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Input Product's name"
+            android:hint="@string/menuProductType"
             android:inputType="text"
             android:textSize="20sp"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -42,7 +43,7 @@
             android:id="@+id/insertProductDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="insert a description"
+            android:hint="@string/menuProductDescription"
             android:inputType="text"
             android:textSize="20sp"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -52,7 +53,7 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Choose an image"/>
+            android:text="@string/menuPicture"/>
 
     <ScrollView
         android:layout_width="300dp"
@@ -63,14 +64,14 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/fooddefault"/>
+        android:src="@drawable/fooddefault2"/>
     </ScrollView>
     <Button
         android:id="@+id/getImage"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Submit Product" />
+        android:text="@string/button_submit" />
 
 
 </LinearLayout>

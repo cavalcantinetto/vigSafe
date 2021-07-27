@@ -11,6 +11,8 @@
         android:id="@+id/table_report"
         android:layout_width="418dp"
         android:layout_height="460dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
         android:padding="10dp"
         android:stretchColumns="*"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,28 +23,32 @@
         <TableRow
             android:id="@+id/tbrow1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/LIGHTBLUE">
 
             <TextView
                 android:id="@+id/date_column"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Date" />
+                android:textColor="@color/white"
+                android:text="@string/tableColumnDate" />
 
             <TextView
                 android:id="@+id/product_column"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Product" />
+                android:textColor="@color/white"
+                android:text="@string/tableColumnProduct" />
 
             <TextView
                 android:id="@+id/temperature_column"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Temperature" />
+                android:textColor="@color/white"
+                android:text="@string/tableColumnTemperature" />
         </TableRow>
     </TableLayout>
 
@@ -53,7 +59,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
         android:layout_marginBottom="32dp"
-        android:text="Submit"
+        android:text="@string/button_submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -64,7 +70,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginBottom="32dp"
-        android:text="Correct"
+        android:text="@string/button_correct"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />

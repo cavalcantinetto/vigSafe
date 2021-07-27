@@ -13,6 +13,18 @@ public class Measure implements Serializable {
             this.date = date;
         }
 
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getProductType() {
         return productType;
     }

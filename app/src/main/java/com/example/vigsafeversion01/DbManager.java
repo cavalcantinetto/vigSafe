@@ -2,26 +2,15 @@ package com.example.vigsafeversion01;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-
-import java.sql.Blob;
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
-
 
 public class DbManager extends SQLiteOpenHelper {
     private static final String dbname = "report.db";
     private static final String TABLEFOOD = "menu";
     private static final String TABLENAME = "report";
-    private static final String TAG = "TAG";
 
     public DbManager(Context context) {
         super(context, dbname, null,1 );
@@ -33,9 +22,6 @@ public class DbManager extends SQLiteOpenHelper {
         db.execSQL(qry);
         String qryFood = "create table " + TABLEFOOD + "(id integer primary key autoincrement, imageID, productType, productDescription)";
         db.execSQL(qryFood);
-
-
-
     }
 
     @Override
@@ -43,8 +29,8 @@ public class DbManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLENAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLEFOOD);
         onCreate(db);
-
     }
+
 
     public String addRecord(String p1, String p2, String p3) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -62,6 +48,7 @@ public class DbManager extends SQLiteOpenHelper {
         }
     }
 
+
     public ArrayList<Measure> getData(String date) {
         SQLiteDatabase db = this.getReadableDatabase();
         String qry = "select * from " + TABLENAME + " where date LIKE '%" + date + "%'";
@@ -71,16 +58,18 @@ public class DbManager extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             result.add(new Measure(cursor.getString(1), cursor.getString(2), cursor.getString(3)));
         }
+        cursor.close();
         return result;
     }
+
 
     public String addRecordFood(byte[] image, String productType, String productDescription) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("imageID", image);
-        cv.put("productType", productType);
-        cv.put("productDescription", productDescription);
+        cv.put("productType", productType.toUpperCase());
+        cv.put("productDescription", productDescription.toUpperCase());
 
         long res = db.insert(TABLEFOOD, null, cv);
 
@@ -91,12 +80,54 @@ public class DbManager extends SQLiteOpenHelper {
         }
     }
 
+
+//    public Boolean removeRecordFood(String productType) {
+//
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String strSelectProductType = "SELECT * FROM " + TABLEFOOD + "WHERE productType = " + productType;
+//        //String strSelectProductDescription = "SELECT * FROM " + TABLEFOOD + " WHERE productDescription =" + productDescription;
+//        Cursor cursorProductType = db.rawQuery(strSelectProductType, null);
+//        //Cursor cursorProductDescription = db.rawQuery(strSelectProductDescription, null);
+//
+////        if(cursorProductDescription.getCount() <= 0){
+////            cursorProductDescription.close();
+//            if (cursorProductType.getCount() <= 0) {
+//                cursorProductType.close();
+//                return false;
+//            } else {
+//                String strDelete = "DELETE FROM " + TABLEFOOD + " WHERE productType= " + productType;
+//                db.rawQuery(strDelete,null);
+//                cursorProductType.close();
+//                return true;
+//            }
+//
+//    }
+//
+//    public Cursor searchProduct (String productType, String productDescription) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String strSelectProductType = "SELECT * FROM " + TABLEFOOD + " WHERE productType=" + '"' + productType + '"';
+//        String strSelectProductDescription = "SELECT * FROM " + TABLEFOOD + " WHERE productDescription=" + '"' + productDescription + '"';
+//        if ((productType != null) || (productType != "")) {
+//            Cursor cursorProductType = db.rawQuery(strSelectProductType, null);
+//            return cursorProductType;
+//        }
+//        else if ((productDescription != null) || (productDescription != "")) {
+//            Cursor cursorProductDescription = db.rawQuery(strSelectProductDescription, null);
+//            return cursorProductDescription;
+//        }
+//        else {
+//            return null;
+//        }
+//
+//    }
+
+
     public Cursor readallDataFood() {
         SQLiteDatabase db = this.getWritableDatabase();
         String qry = "select * from " + TABLEFOOD + " order by id desc";
         Cursor cursor = db.rawQuery(qry, null);
         return cursor;
 
-
     }
+
 }

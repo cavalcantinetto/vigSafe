@@ -3,8 +3,10 @@ package com.example.vigsafeversion01;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -55,7 +57,7 @@ public class insertProducts extends AppCompatActivity {
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
                         requestPermissions(permissions, PERMISSION_CODE);
                     } else {
                         pickImageFromGallery();
@@ -67,10 +69,16 @@ public class insertProducts extends AppCompatActivity {
         });
 
         getImage.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void onClick(View v) {
-                String response = db.addRecordFood(imageViewToBite(mImageView), productType.getText().toString(), productDescription.getText().toString());
-                Toast.makeText(getApplicationContext(), response , Toast.LENGTH_LONG).show();
+                String response = db.addRecordFood(imageViewToBite(mImageView), productType.getText().toString().toUpperCase(), productDescription.getText().toString().toUpperCase());
+                productDescription.setText("");
+                productType.setText("");
+                mImageView.setImageDrawable(getResources().getDrawable(R.drawable.fooddefault2));
+                productType.requestFocus();
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+            //}
 
             }
         });

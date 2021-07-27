@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".insertProducts">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menuDeleteInstructions"        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/deleteProductTypeField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_margin="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/deleteProductType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/menuDeleteProductType"
+            android:inputType="text"
+            android:textSize="20sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/deleteProductDescriptionField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_margin="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/deleteProductDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/menuDeleteProductDescription"
+            android:inputType="text"
+            android:textSize="20sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchproductbutton"
+            android:text="@string/ButtontableGetProduct"
+            android:layout_marginRight="60dp" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/deleteproductbutton"
+            android:text="@string/ButtontableDeleteDB"/>
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center">
+
+        <TableLayout
+            android:id="@+id/table_menu_delete"
+            android:layout_width="418dp"
+            android:layout_height="460dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:stretchColumns="*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TableRow
+                android:id="@+id/tbrowdelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/LIGHTBLUE">
+
+
+                <TextView
+                    android:id="@+id/product_column"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="@string/tableDeleteProduct" />
+
+                <TextView
+                    android:id="@+id/tproduct_description_column"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="@string/tableDeleteDescription" />
+            </TableRow>
+        </TableLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

@@ -9,13 +9,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FoodList {
     String productType, productDescription;
     Bitmap imageId;
-    EditText temperature;
+    String temperature;
 
-    public FoodList(Bitmap imageId, String productType, String productDescription) {
+    public FoodList(Bitmap imageId, String productType, String productDescription, String temperature) {
         this.productType = productType;
         this.productDescription = productDescription;
         this.imageId = imageId;
-        //this.temperature = temperature;
+        this.temperature = temperature;
     }
 
     public String getProductType() {
@@ -42,11 +42,11 @@ public class FoodList {
         this.imageId = imageId;
     }
 
-    //public EditText getTemperature() {
-        //return temperature;
-    //}
+    public String getTemperature() {
+        return temperature;
+    }
 
-    //public void setTemperature(EditText temperature) {
-        //this.temperature = temperature;
-    //}
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
 }

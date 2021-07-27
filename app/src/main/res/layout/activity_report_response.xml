@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ReportResponse">
+    tools:context=".ReportResponse"
+    android:id="@+id/reportResponse">
 
     <TextView
         android:id="@+id/header_title"
@@ -15,25 +16,40 @@
         android:foregroundGravity="center"
         android:layout_gravity="center"
         android:paddingTop="20dp"
-        android:textSize="20dp"
-        android:textColor="@color/common_google_signin_btn_text_light"
-        android:text="Insert Date to Search a report" />
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="@string/reportInstructions" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textSearch"
         android:layout_marginTop="10dp"
-        android:hint="dd-mm-aaaa"
+        android:hint="@string/reportHint"
         android:gravity="center"
         android:inputType="text"/>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
         android:id="@+id/search_button"
-        android:layout_marginTop="10dp"
-        android:text="Get Report" />
+        android:text="@string/reportGetButton"
+        android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/return_button"
+            android:text="@string/button_done"/>
+
+    </LinearLayout>
+
 
     <TableLayout
         android:id="@+id/table_report_FIRST_LINE"
@@ -50,7 +66,8 @@
         android:id="@+id/tbrow_frist_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@color/LIGHTBLUE">
 
 
         <TextView
@@ -58,27 +75,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Date" />
+            android:textColor="@color/white"
+            android:text="@string/tableColumnDate" />
 
         <TextView
             android:id="@+id/product_column_first_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Product" />
+            android:textColor="@color/white"
+            android:text="@string/tableColumnProduct" />
 
         <TextView
             android:id="@+id/temperature_column_first_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Temperature" />
+            android:textColor="@color/white"
+            android:text="@string/tableColumnTemperature" />
     </TableRow>
     </TableLayout>
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollViewReportResponse">
 
     <TableLayout
         android:id="@+id/table_report"
@@ -103,30 +124,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/product_column"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/temperature_column"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/black"/>
         </TableRow>
     </TableLayout>
     </ScrollView>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/return_button"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="Return"/>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

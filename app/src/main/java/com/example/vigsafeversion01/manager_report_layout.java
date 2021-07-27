@@ -1,12 +1,8 @@
 package com.example.vigsafeversion01;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -14,24 +10,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.io.Serializable;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -90,7 +70,7 @@ public class manager_report_layout extends MainActivity implements Serializable 
                     startActivity(intent);
                     finish();
                 }
-            }, 5000);
+            }, 3000);
 
 
             });
@@ -99,7 +79,7 @@ public class manager_report_layout extends MainActivity implements Serializable 
         btnCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(manager_report_layout.this, MainActivity.class);
+                Intent intent = new Intent(manager_report_layout.this, FetchDataFoodList.class);
                 startActivity(intent);
 
             }

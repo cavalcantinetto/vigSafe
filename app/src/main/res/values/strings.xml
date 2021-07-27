@@ -1,3 +1,37 @@
 <resources>
-    <string name="app_name">VigSafe(version0.1)</string>
+    <string name="app_name">VigSafe</string>
+    <string name="button_submit">SUBMIT</string>
+    <string name="button_done">DONE</string>
+    <string name="button_correct">CORRECT</string>
+    <string name="button_go_back">BACK</string>
+    <string name="managerTextButton">Enter as a Manager</string>
+    <string name="employeeTextButton">Enter as an employee</string>
+    <string name="welcomeMessage">Welcome to Vigsafe App</string>
+    <string name="reportInstructions">Insert date to find a report.</string>
+    <string name="reportHint">dd/mm/aaaa</string>
+    <string name="reportGetButton">GET REPORT</string>
+    <string name="tableColumnProduct">Product Type</string>
+    <string name="tableColumnTemperature">Temperature</string>
+    <string name="tableColumnDate">Date</string>
+    <string name="menuInstructions">Insert a new item to be measured</string>
+    <string name="menuProductType">Insert a new product type</string>
+    <string name="menuProductDescription">Insert a new description</string>
+    <string name="menuPicture">INSERT IMAGE</string>
+    <string name="insertMenuAlertProductType">Insert a product type to continue.</string>
+    <string name="insertMenuAlertProductDescription">Insert a product description to continue.</string>
+    <string name="dbnotfoundAlertProductType">This product type does not exist.</string>
+    <string name="dbnotfoundAlertProductDescription">This product description does not exist.</string>
+    <string name="menuDeleteInstructions">Chose a product type or description to delete an item.</string>
+    <string name="menuDeleteProductType">Product type</string>
+    <string name="menuDeleteProductDescription">Product description</string>
+    <string name="deleteMenuSuccess">Successfully Deleted</string>
+    <string name="deleteMenuFail">Product not found at database :(</string>
+    <string name="tableDeleteProduct">Product to be deleted</string>
+    <string name="tableDeleteDescription">Description</string>
+    <string name="ButtontableGetProduct">GET PRODUCT</string>
+    <string name="ButtontableDeleteDB">DELETE ITEM</string>
+    <string name="somthingWrong">Something went wrong</string>
+    <string name="FileSavedToDownload">File saved at downloads folder</string>
+
+
 </resources>

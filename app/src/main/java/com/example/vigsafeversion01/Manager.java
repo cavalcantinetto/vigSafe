@@ -31,7 +31,7 @@ public class Manager extends AppCompatActivity {
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Manager.this, FetchDataFoodList.class));
+                startActivity(new Intent(Manager.this, DeleteProducts.class));
             }
 
         });
@@ -43,9 +43,9 @@ public class Manager extends AppCompatActivity {
             }
 
             private void TemperatureActivity() {
-                startActivity(new Intent(Manager.this, MainActivity.class));
+                startActivity(new Intent(Manager.this, FetchDataFoodList.class));
             }
-        });
+            });
 
         report.setOnClickListener(new View.OnClickListener() {
             @Override
