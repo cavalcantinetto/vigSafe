@@ -35,14 +35,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ReportResponse extends AppCompatActivity {
 
     TextView textResponse;
     EditText textSearch;
     DbManager obj = null;
-    Button btnSearch, btnReturn;
+    Button btnSearch, btnSave;
     TableLayout table;
     String RESTAURANT_NAME = "MONTANA EXPRESS";
 
@@ -60,7 +62,7 @@ public class ReportResponse extends AppCompatActivity {
         //textResponse = findViewById(R.id.textResponse);
         textSearch = findViewById(R.id.textSearch);
         btnSearch = findViewById(R.id.search_button);
-        btnReturn = findViewById(R.id.return_button);
+        btnSave = findViewById(R.id.return_button);
         table = findViewById(R.id.table_report);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +72,7 @@ public class ReportResponse extends AppCompatActivity {
             }
         });
 
-        btnReturn.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
@@ -103,7 +105,7 @@ public class ReportResponse extends AppCompatActivity {
                     }
                 }
 
-                Intent intent = new Intent(ReportResponse.this, Activity_profile.class);
+                Intent intent = new Intent(ReportResponse.this, manager_report_layout.class);
                 startActivity(intent);
             }
         });
@@ -117,6 +119,44 @@ public class ReportResponse extends AppCompatActivity {
 
 
         table.removeAllViews();
+
+        TextView topHeader1 = new TextView(this);
+        TextView topHeader2 = new TextView(this);
+        topHeader1.setText("MONTANA EXPRESS");
+        topHeader2.setText("DATE: " + textSearch.getText().toString());
+
+        TextView line1 = new TextView(this);
+        TextView line2 = new TextView(this);
+        TextView line3 = new TextView(this);
+        line1.setText("------------");
+        line2.setText("------------");
+        line3.setText("------------");
+
+
+        TextView header1 = new TextView(this);
+        TextView header2 = new TextView(this);
+        TextView header3 = new TextView(this);
+        header1.setText("Date");
+        header2.setText("ProductType");
+        header3.setText("Temperature");
+
+        TableRow rowTopHeader = new TableRow(this);
+        rowTopHeader.addView(topHeader1);
+        rowTopHeader.addView(topHeader2);
+
+        TableRow lines = new TableRow(this);
+        lines.addView(line1);
+        lines.addView(line2);
+        lines.addView(line3);
+
+        TableRow header = new TableRow(this);
+        header.addView(header1);
+        header.addView(header2);
+        header.addView(header3);
+
+        table.addView(rowTopHeader);
+        table.addView(lines);
+        table.addView(header);
 
         for(Measure measure : measures) {
             TextView t1 = new TextView(this);
@@ -137,70 +177,40 @@ public class ReportResponse extends AppCompatActivity {
 
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//    public void generatePDF (TableLayout table) {
-//
-//        PdfDocument document = new PdfDocument();
-//        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(800, 1400, 1).create();
-//        PdfDocument.Page page = document.startPage(pageInfo);
-//
-//        int measureWidth = View.MeasureSpec.makeMeasureSpec(page.getCanvas().getWidth(), View.MeasureSpec.EXACTLY);
-//        int measuredHeight = View.MeasureSpec.makeMeasureSpec(page.getCanvas().getHeight(), View.MeasureSpec.EXACTLY);
-//
-//        table.measure(measureWidth, measuredHeight);
-//        table.layout(0, 0, page.getCanvas().getWidth(), page.getCanvas().getHeight());
-//
-//        table.draw(page.getCanvas());
-//
-//        document.finishPage(page);
-//
-//        //String now = java.time.LocalDate.now().toString();
-//        //String filepath = Environment.getExternalStorageDirectory().getPath() + "/report.pdf";
-//        String filepath = "/storage/emulated/0/Download/report.pdf";
-//        File myFile = new File(filepath);
-//
-//        try {
-//            document.writeTo(new FileOutputStream(myFile));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
-//        }
-//
-//    }
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void generateImageView() throws IOException, DocumentException {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
         LinearLayoutCompat root = (LinearLayoutCompat) inflater.inflate(R.layout.activity_report_response, null); //LinearLayout is root view of my UI(xml) file.
         root.setDrawingCacheEnabled(true);
-        View screenview = this.getWindow().findViewById(R.id.reportResponse);
-        Bitmap screen= getBitmapFromView(screenview); // here give id of our root layout (here its my RelativeLayout's id)
+        View screenviewtable = this.getWindow().findViewById(R.id.table_report);
+        Bitmap screentable= getBitmapFromView(screenviewtable);
+        float imageWidht = screenviewtable.getWidth();
+        float imageHeight = screenviewtable.getHeight();
+        double ratio = 0.5;
 
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        screen.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
+
+        ByteArrayOutputStream streamtable = new ByteArrayOutputStream();
+        screentable.compress(Bitmap.CompressFormat.PNG, 100, streamtable);
+        byte[] byteArraytable = streamtable.toByteArray();
 
 
         Document document = new Document();
         String filepath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
-        File file = new File(filepath, "myImage.pdf");
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy-HHmmss");
+        String filename = formatter.format(new Date()) + "-report.pdf";
+        File file = new File(filepath, filename);
         OutputStream outputstream = new FileOutputStream(file);
 
 
-        Image image = Image.getInstance(byteArray);
+        Image imagetable = Image.getInstance(byteArraytable);
 
-        int ratio = 50;
-        int imagewidth = screenview.getWidth()/100*ratio;
-        int imageHeight = screenview.getHeight()/100*ratio;
 
-        image.scaleToFit(80, 300);
         PdfWriter.getInstance(document, outputstream);
-        com.lowagie.text.Rectangle rectangule = new Rectangle(100, 300);
+        com.lowagie.text.Rectangle rectangule = new Rectangle(imageWidht + 10, imageHeight + 10);
         document.setPageSize(rectangule);
-        document.setMargins(10,2,2,2);
-
+        document.setMargins(5,5,5,5);
         document.open();
-        document.add(image);
+        document.add(imagetable);
         document.close();
 
     }

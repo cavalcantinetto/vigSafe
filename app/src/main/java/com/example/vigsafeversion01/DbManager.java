@@ -5,12 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import java.util.ArrayList;
 
 public class DbManager extends SQLiteOpenHelper {
     private static final String dbname = "report.db";
     private static final String TABLEFOOD = "menu";
     private static final String TABLENAME = "report";
+    private static final String TABLEUSER = "users";
 
     public DbManager(Context context) {
         super(context, dbname, null,1 );
@@ -22,12 +24,29 @@ public class DbManager extends SQLiteOpenHelper {
         db.execSQL(qry);
         String qryFood = "create table " + TABLEFOOD + "(id integer primary key autoincrement, imageID, productType, productDescription)";
         db.execSQL(qryFood);
+        String qryUser = "create table " + TABLEUSER + "(id integer primary key autoincrement, userName, password, function)";
+        db.execSQL(qryUser);
+
+        String qryadm = "SELECT * FROM " + TABLEUSER + " where username=" + "'" + "superadmin" + "'";
+        Cursor cursor = db.rawQuery(qryadm, null, null);
+        if (cursor.getCount() > 0) {
+            cursor.close();
+        } else {
+            ContentValues cv = new ContentValues();
+            cv.put("userName", "superadmin");
+            cv.put("password", "adminsuper");
+            cv.put("function", "SUPERADMIN");
+
+            long res = db.insert(TABLEUSER, null, cv);
+        }
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLENAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLEFOOD);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLEUSER);
         onCreate(db);
     }
 
@@ -130,4 +149,79 @@ public class DbManager extends SQLiteOpenHelper {
 
     }
 
+    public Cursor isUser(String username, String password) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String qry = "SELECT * FROM " + TABLEUSER + " WHERE userName=" + '"' + username + '"' + " AND password=" + '"' + password + '"';
+        Cursor cursor = db.rawQuery(qry, null, null);
+        if (cursor.getCount() > 0) {
+            //cursor.close();
+            return cursor;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    public String addUser(String userName, String password, String function) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("userName", userName.toLowerCase());
+        cv.put("password", password);
+        cv.put("function", function.toUpperCase());
+
+        long res = db.insert(TABLEUSER, null, cv);
+
+        if (res == -1) {
+            return "Failed";
+        } else {
+            return "Successfully Created";
+        }
+    }
+
+
+    public Boolean checkUser(String username) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String qry = "SELECT * FROM " + TABLEUSER + " where userName=" + "'" + username + "'";
+        Cursor cursor = db.rawQuery(qry, null, null);
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            return true;
+        } else {
+            cursor.close();
+            return false;
+        }
+    }
+
+    public Integer deleteUser(String username) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String qry = "SELECT * FROM " + TABLEUSER + " where userName=" + "'" + username + "'";
+        Cursor cursor = db.rawQuery(qry, null, null);
+        if (cursor.getCount() > 0) {
+            Integer res = db.delete(TABLEUSER, "userName='" + username + "'", null);
+            return res;
+        } else {
+            cursor.close();
+            return -1;
+        }
+
+
+    }
+
+    public Cursor getUserToDelete(String username) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String qry = "SELECT * FROM " + TABLEUSER + " WHERE userName=" + '"' + username + '"';
+        Cursor cursor = db.rawQuery(qry, null, null);
+        if (cursor.getCount() > 0) {
+            //cursor.close();
+            return cursor;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
 }

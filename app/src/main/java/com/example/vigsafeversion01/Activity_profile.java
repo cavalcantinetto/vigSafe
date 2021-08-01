@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.vigsafeversion01.ui.login.LoginActivity;
+
 public class Activity_profile extends AppCompatActivity {
     public String nameGlobal = "Mac";
 
@@ -39,7 +41,7 @@ public class Activity_profile extends AppCompatActivity {
             }
 
             private void button2Activity() {
-                startActivity(new Intent(Activity_profile.this, MainActivity.class));
+                startActivity(new Intent(Activity_profile.this, LoginActivity.class));
             }
         });
 

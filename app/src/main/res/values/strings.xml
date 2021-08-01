@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">VigSafe</string>
+    <string name="date">Date</string>
+    <string name="temperature">Temperature</string>
+    <string name="productType">Product Type</string>
     <string name="button_submit">SUBMIT</string>
     <string name="button_done">DONE</string>
+    <string name="button_save">SAVE TO FILE</string>
     <string name="button_correct">CORRECT</string>
     <string name="button_go_back">BACK</string>
     <string name="managerTextButton">Enter as a Manager</string>
@@ -32,6 +36,26 @@
     <string name="ButtontableDeleteDB">DELETE ITEM</string>
     <string name="somthingWrong">Something went wrong</string>
     <string name="FileSavedToDownload">File saved at downloads folder</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">User</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_register">register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome "</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="userexist">User already exist!</string>
+    <string name="nulluserorpassword">User null or password shoter than 5 characters</string>
+    <string name="success">Successfully Registered</string>
+    <string name="registernewuser">Manage new users</string>
+    <string name="deleteuser">Delete User</string>
+    <string name="userdeletemessage">Confirm the user name and function and press trash button.</string>
 
 
+    <string-array name="functions">
+        <item>Employee</item>
+        <item>Manager</item>
+        <item>SuperUser</item>
+    </string-array>
 </resources>

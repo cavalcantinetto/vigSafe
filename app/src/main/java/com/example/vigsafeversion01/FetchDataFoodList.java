@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.vigsafeversion01.ui.login.LoginActivity;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class FetchDataFoodList extends AppCompatActivity {
     public RecyclerView recyclerView;
     public ArrayList<FoodList> dataholder = new ArrayList<>();
     public Report report = new Report();
-    public Button buttonSubmit;
+    public Button buttonSubmit, buttonBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +81,26 @@ public class FetchDataFoodList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 measurement();
-                Intent intent = new Intent(FetchDataFoodList.this, manager_report_layout.class);
+                Intent intent = new Intent(FetchDataFoodList.this, LoginActivity.class);
+
                 intent.putExtra("REPORT", report);
                 //resetvalues(); It'' better not reset considering it could be a lot of work to correct just one measurement
                 startActivity(intent);
 
             }
         });
+
+        buttonBack = (Button) findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                measurement();
+                Intent intent = new Intent(FetchDataFoodList.this, LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
 
     }
 
@@ -98,6 +113,7 @@ public class FetchDataFoodList extends AppCompatActivity {
             Measure measure = new Measure(dataholder.get(i).getProductType(), dataholder.get(i).getTemperature(), testDateString);
             report.addMeasure(measure);
         }
+        Toast.makeText(this, getString(R.string.success), Toast.LENGTH_LONG);
     }
 
     public void resetvalues() {

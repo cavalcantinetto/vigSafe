@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void measurement() {
         //Date currentTime = Calendar.getInstance().getTime();
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss");
         Date todaysDate = new Date();
         String testDateString = df.format(todaysDate);
 

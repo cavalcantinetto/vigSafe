@@ -36,65 +36,20 @@
         android:gravity="center">
 
     <Button
-        android:layout_width="130dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:id="@+id/search_button"
         android:text="@string/reportGetButton"
-        android:layout_marginEnd="10dp"/>
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp" />
 
         <Button
-            android:layout_width="130dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:id="@+id/return_button"
-            android:text="@string/button_done"/>
+            android:text="@string/button_save"/>
 
     </LinearLayout>
-
-
-    <TableLayout
-        android:id="@+id/table_report_FIRST_LINE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stretchColumns="*"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="10dp">
-
-
-    <TableRow
-        android:id="@+id/tbrow_frist_line"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@color/LIGHTBLUE">
-
-
-        <TextView
-            android:id="@+id/date_column_first_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:text="@string/tableColumnDate" />
-
-        <TextView
-            android:id="@+id/product_column_first_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:text="@string/tableColumnProduct" />
-
-        <TextView
-            android:id="@+id/temperature_column_first_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:text="@string/tableColumnTemperature" />
-    </TableRow>
-    </TableLayout>
 
     <ScrollView
         android:layout_width="wrap_content"

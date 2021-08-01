@@ -12,7 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VigSafeversion01">
-        <activity android:name=".DeleteProducts"></activity>
+        <activity android:name=".UsersManager"/>
+        <activity
+            android:name=".ui.login.LoginActivity">
+<!--            android:label="@string/title_activity_login">-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DeleteProducts" />
         <activity android:name=".insertProducts" />
         <activity android:name=".FetchDataFoodList" />
         <activity android:name=".ReportResponse" />
@@ -20,11 +30,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".manager_report_layout" />
         <activity android:name=".Activity_profile">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

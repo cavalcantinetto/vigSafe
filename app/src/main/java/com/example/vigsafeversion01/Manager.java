@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Manager extends AppCompatActivity {
     private Button products, temperatures ,schedule, report, logout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class Manager extends AppCompatActivity {
         temperatures = (Button) findViewById(R.id.temperatures);
         schedule = (Button) findViewById(R.id.schedule);
         report = (Button) findViewById(R.id.reportdb);
+
 
         products.setOnClickListener(new View.OnClickListener() {
             @Override
